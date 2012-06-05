@@ -36,4 +36,8 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
       listener.info "BuildResult: #{build_result}"
     end
 
+    # TODO select box using Enum like approach
+    # TODO validate config
+    # TODO field help for config
+    # TODO global config
 end
