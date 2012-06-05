@@ -25,7 +25,10 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
     # @param [Jenkins::Launcher] launcher the launcher that can run code on the node running this build
     # @param [Jenkins::Model::Listener] listener the listener for this build.
     def perform(build, launcher, listener)
-      # actually perform the build step
+      # TODO wanna access to `result` much ruby way.
+      build_result = build.native.result
+
+      listener.info "BuildResult: #{build_result}"
     end
 
 end
