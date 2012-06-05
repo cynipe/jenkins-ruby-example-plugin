@@ -1,3 +1,4 @@
+require 'pry'
 
 class ExamplePublisher < Jenkins::Tasks::Publisher
 
@@ -6,7 +7,10 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
     # Invoked with the form parameters when this extension point
     # is created from a configuration screen.
     def initialize(attrs = {})
-
+      attrs.each_pair do |k, v|
+        self.instance_variable_set "@#{k}".to_sym, v
+      end
+      binding.pry
     end
 
     ##
