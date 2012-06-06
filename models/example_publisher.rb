@@ -4,14 +4,12 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
 
     display_name "Example publisher"
 
-    attr_reader :text
+    attr_reader :text, :select_box
 
     # Invoked with the form parameters when this extension point
     # is created from a configuration screen.
     def initialize(attrs = {})
-      attrs.each_pair do |k, v|
-        self.instance_variable_set "@#{k}".to_sym, v
-      end
+      @text = attrs["text"]
     end
 
     ##
