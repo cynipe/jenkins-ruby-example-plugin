@@ -1,5 +1,17 @@
 require 'pry'
 
+# monkey patch
+# https://github.com/jenkinsci/jenkins.rb/commit/4bac65f453d7a444332014f6f52310bf06f5a4d3
+module Jenkins::Model::Descriptor
+
+  def getGlobalConfigPage
+    base = "/#{name_to_path}/global"
+    [base+".erb",base+".haml"].find { |n|
+      self.getKlass.getResource(n)
+    }
+  end
+end
+
 class ExamplePublisher < Jenkins::Tasks::Publisher
 
     display_name "Example publisher"
@@ -38,5 +50,4 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
     # TODO select box using Enum like approach
     # TODO validate config
     # TODO field help for config
-    # TODO global config
 end
