@@ -10,6 +10,7 @@ class ExamplePublisher < Jenkins::Tasks::Publisher
     # is created from a configuration screen.
     def initialize(attrs = {})
       @text = attrs["text"]
+      @select_box = attrs["select_box"]
     end
 
     ##

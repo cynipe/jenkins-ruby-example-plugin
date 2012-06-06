@@ -4,6 +4,14 @@ f.block do
   f.entry(:title => 'Text', :field => 'text') do
     f.textbox
   end
+  f.entry(:title => 'SelectBox', :field => 'select_box') do
+%>
+  <select name='select_box'>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+<%
+  end
 end
 %>
 
